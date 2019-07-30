@@ -5,13 +5,14 @@ class App < Sinatra::Base
     enable :sessions
     set :session_secret, "secret"
   end
-  
+
   get '/' do
     erb :index
   end
-  
+
   post '/checkout' do
     @session = session
+    binding.pry
     @session["item"] = params[:item]
     #binding.pry
     "#{@session[:item]}"
